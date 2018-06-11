@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  win: false
+  lose: false
+  tie: false
+
+two:
+  win: false
+  lose: false
+  tie: false

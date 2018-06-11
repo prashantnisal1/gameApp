@@ -1,0 +1,40 @@
+<!-- <h1> Game Play page </h2> -->
+<div class="row">
+  <div class="col-6">
+    <h3> <%= @user.name %>'s hand</h3>
+    <ul>
+    <li> card ranks in order of play: <%= @user.hand(@game).cards.map { |c| c.rank } %> </li>
+    <li> card values: <%= @user.hand(@game).cards.map { |c| c.value } %> </li>
+    <li> value of hand: <%= @user.hand(@game).value %> </li>
+    </ul>
+  </div>
+  <div class="col-6">
+    <h3> Dealer's hand </h3>
+    <ul>
+    <li>
+      card ranks in order of play: <%= @game.dealer.hand(@game).cards.map { |c| c.rank } %>
+    </li>
+    <li> card values: <%= @game.dealer.hand(@game).cards.map { |c| c.value } %> </li>
+    <li> value of hand: <%= @game.dealer.hand(@game).value %> </li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <% if @game.is_done? then %>
+      <h3>
+        The game is done!
+        <%= @game.winner == @user ? "You won!" : "You lost." %>
+      </h3>
+      See your scores on the
+      <%= link_to 'result', :controller => "users", :action => "index" %>
+    <% else %>
+      <p> <%= @user.name %>, do you want to: </p>
+      <ul>
+      <li> <%= link_to 'hit?', :controller => "games", :action => "hit" %> </li>
+      <li> <%= link_to 'stand?', :controller => "games", :action => "stand" %> </li>
+      </ul>
+    <% end %>   
+  </div>  
+</div>
+
